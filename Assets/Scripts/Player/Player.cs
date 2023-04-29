@@ -38,4 +38,15 @@ public class Player : MonoBehaviour
         _myModel.HandleRotation();
         _myModel.VelocityClamp();
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //Could use TryGetComponent(out PipeObstacle obstacle).
+        //But checking the layers in this case is better because I don't really need to get the obstacle reference
+        if (other.gameObject.layer == 3)
+        {
+            
+            Debug.Log("Touched");
+        }
+    }
 }
