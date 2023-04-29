@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerController
 {
@@ -17,5 +18,13 @@ public class PlayerController
         {
             _model.Flap();
         }
+        else if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                _model.Flap();
+            }
+        }
     }
+
 }

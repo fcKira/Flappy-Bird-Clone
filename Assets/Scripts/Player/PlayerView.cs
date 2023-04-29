@@ -11,6 +11,12 @@ public class PlayerView
         _myPlayer = myPlayer;
     }
 
+    public void SetAnimatorController(RuntimeAnimatorController newController)
+    {
+        _myPlayer.Animator.enabled = true;
+        _myPlayer.Animator.runtimeAnimatorController = newController;
+    }
+
     public void TriggerFlap()
     {
         _myPlayer.Animator.SetTrigger("Flap");
