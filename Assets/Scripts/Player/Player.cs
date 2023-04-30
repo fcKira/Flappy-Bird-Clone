@@ -69,8 +69,15 @@ public class Player : MonoBehaviour
         //But checking the layers in this case is better because I don't really need to get the obstacle reference
         if (other.gameObject.layer == 3)
         {
-            
+            GameManager.Instance.GoToEnd();
             Debug.Log("Touched");
+        }
+        else if (other.gameObject.layer == 6) 
+        {
+            //Same here. In case of having a dynamic way to earn score (+1, +2, -5)
+            //I should get the obstacle component to determine the amount of score earned/lost
+            GameManager.Instance.EarnScore();
+            Debug.Log("Score+");
         }
     }
 

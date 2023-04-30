@@ -7,6 +7,7 @@ public class PipeObstacle : MonoBehaviour
 {
     [SerializeField] Transform _topPipe;
     [SerializeField] Transform _bottomPipe;
+    [SerializeField] BoxCollider _myCollider;
 
     public float speed;
     public float xBoundPosition;
@@ -25,6 +26,12 @@ public class PipeObstacle : MonoBehaviour
 
     public void ModifyGap(float gap)
     {
+        Vector3 size = _myCollider.size;
+
+        size.y = gap;
+
+        _myCollider.size = size;
+
         gap /= 2;
 
         _topPipe.localPosition = Vector3.up * gap;

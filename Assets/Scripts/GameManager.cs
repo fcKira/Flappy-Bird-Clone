@@ -21,13 +21,19 @@ public class GameManager : MonoBehaviour
 
     [field: SerializeField] public GameplayCanvas GameplayCanvas { get; private set; }
 
-
     public FSM<GameStates> _FSM { get; private set; }
+
+    ScoreHandler _scoreHandler;
+
+    public int Highscore { get { return _scoreHandler.Highscore; } }
+    public int Currentscore { get { return _scoreHandler.Currentscore; } }
 
     private void Awake()
     {
         if (Instance) Destroy(gameObject);
         else Instance = this;
+
+        _scoreHandler = new ScoreHandler(GameplayCanvas.SetHighscore, GameplayCanvas.SetCurrentScore);
 
         _FSM = new FSM<GameStates>();
 
@@ -50,6 +56,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         ScreenManager.Instance.Push(GameplayScreen);
+
         _FSM.ChangeState(GameStates.Menu);
     }
 
@@ -70,11 +77,22 @@ public class GameManager : MonoBehaviour
 
     public void GoToMainMenu()
     {
+        _scoreHandler.ResetCurrentScore();
+
+        GameplayCanvas.SetCurrentScore(Currentscore);
+
         _FSM.ChangeState(GameStates.Menu);
     }
 
     public void GoToEnd()
     {
+        _scoreHandler.EndGameSession();
+
         _FSM.ChangeState(GameStates.Endgame);
+    }
+
+    public void EarnScore()
+    {
+        _scoreHandler.EarnScore();
     }
 }

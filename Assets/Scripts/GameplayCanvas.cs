@@ -14,6 +14,16 @@ public class GameplayCanvas : MonoBehaviour
         StartInitialize();
     }
 
+    public void SetCurrentScore(int score)
+    {
+        _currentScoreText.text = score.ToString();
+    }
+
+    public void SetHighscore(int score)
+    {
+        _highscoreText.text = score.ToString();
+    }
+
     public void StartInitialize()
     {
         _highscoreText.gameObject.SetActive(true);
@@ -25,6 +35,7 @@ public class GameplayCanvas : MonoBehaviour
     {
         _highscoreText.gameObject.SetActive(false);
         _currentScoreText.gameObject.SetActive(false);
+        _pauseButton.SetActive(false);
     }
 
     public void GameplayInitialize()

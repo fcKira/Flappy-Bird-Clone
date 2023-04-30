@@ -15,7 +15,8 @@ public class ScreenEndGame : ScreenUI
     {
         base.Activate();
 
-        _currentScore = 1000;
+        _currentScore = GameManager.Instance.Currentscore;
+        _highscoreText.text = GameManager.Instance.Highscore.ToString();
 
         StartCoroutine(ShowCurrentScoreInTime());
     }
