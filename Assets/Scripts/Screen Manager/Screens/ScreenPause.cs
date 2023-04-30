@@ -6,7 +6,7 @@ public class ScreenPause : ScreenUI
 {
     public void BTN_ReturnMainMenu()
     {
-        GameManager.Instance.GoToMainMenu();
+        GameManager.Instance.GoToEnd();
     }
 
     public void BTN_BackToGame()

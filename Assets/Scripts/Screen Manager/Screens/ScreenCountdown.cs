@@ -17,16 +17,6 @@ public class ScreenCountdown : ScreenUI
         base.Activate();
     }
 
-    /// <summary>
-    /// Triggered from Pause Button
-    /// </summary>
-    public void PauseGame()
-    {
-        //_pauseButton.SetActive(false);
-
-        GameManager.Instance.PauseGameplay();
-    }
-
     void Update()
     {
         _timerText.text = Mathf.CeilToInt(_currentTime).ToString();

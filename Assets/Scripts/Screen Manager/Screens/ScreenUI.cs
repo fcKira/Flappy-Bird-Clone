@@ -10,7 +10,6 @@ public class ScreenUI : MonoBehaviour, IScreen
     void Awake()
     {
         _buttons = GetComponentsInChildren<Button>();
-
     }
 
     public virtual void Activate()

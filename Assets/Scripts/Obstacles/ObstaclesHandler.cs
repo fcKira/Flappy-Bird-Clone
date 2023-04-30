@@ -69,6 +69,16 @@ public class ObstaclesHandler : MonoBehaviour
         _currentObstacles.Remove(pipe);
     }
 
+    public void Dispose()
+    {
+        foreach (var obstacle in _currentObstacles)
+        {
+            ObstacleFactory.Instance.ReturnObject(obstacle);
+        }
+
+        _currentObstacles.Clear();
+    }
+
     void InitializeBoundaries()
     {
         Camera camera = Camera.main;

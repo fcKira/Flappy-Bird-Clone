@@ -79,7 +79,7 @@ public class Player : MonoBehaviour
         transform.position = _startPosition;
         transform.rotation = _startRotation;
 
-        Rigidbody.velocity = Vector3.zero;
+        Rigidbody.velocity = _velocityCached = Vector3.zero;
     }
 
     public void PlayerInMenu()

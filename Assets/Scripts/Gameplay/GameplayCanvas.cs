@@ -14,23 +14,27 @@ public class GameplayCanvas : MonoBehaviour
         StartInitialize();
     }
 
-    private void StartInitialize()
+    public void StartInitialize()
     {
-        _highscoreText.gameObject.SetActive(false);
+        _highscoreText.gameObject.SetActive(true);
         _currentScoreText.gameObject.SetActive(false);
         _pauseButton.gameObject.SetActive(false);
     }
 
-    public void GameplayInitialize()
+    public void HideAllScores()
     {
-        _highscoreText.gameObject.SetActive(true);
-        _currentScoreText.gameObject.SetActive(true);
+        _highscoreText.gameObject.SetActive(false);
+        _currentScoreText.gameObject.SetActive(false);
     }
 
-    /// <summary>
-    /// Triggered from Pause Button
-    /// </summary>
-    public void PauseGame()
+    public void GameplayInitialize()
+    {
+        _currentScoreText.gameObject.SetActive(true);
+        _pauseButton.gameObject.SetActive(true);
+    }
+
+
+    public void BTN_PauseGame()
     {
         _pauseButton.SetActive(false);
 

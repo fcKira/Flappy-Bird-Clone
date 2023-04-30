@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     static public GameManager Instance { get; private set; }
 
     [field: SerializeField] public Player Player { get; private set; }
+    [field: SerializeField] public ObstaclesHandler ObstacleHandler { get; private set; }
 
     [field: SerializeField] public ScreenGO GameplayScreen { get; private set; }
 
@@ -16,7 +17,10 @@ public class GameManager : MonoBehaviour
 
     [field: SerializeField] public ScreenCountdown CountdownScreen { get; private set; }
 
+    [field: SerializeField] public ScreenEndGame EndGameScreen { get; private set; }
+
     [field: SerializeField] public GameplayCanvas GameplayCanvas { get; private set; }
+
 
     public FSM<GameStates> _FSM { get; private set; }
 
@@ -38,6 +42,9 @@ public class GameManager : MonoBehaviour
 
         IState<GameStates> countdown = new CountdownState(this);
         _FSM.AddState(GameStates.Countdown, countdown);
+
+        IState<GameStates> endgame = new EndGameState(this);
+        _FSM.AddState(GameStates.Endgame, endgame);
     }
 
     private void Start()
@@ -64,5 +71,10 @@ public class GameManager : MonoBehaviour
     public void GoToMainMenu()
     {
         _FSM.ChangeState(GameStates.Menu);
+    }
+
+    public void GoToEnd()
+    {
+        _FSM.ChangeState(GameStates.Endgame);
     }
 }

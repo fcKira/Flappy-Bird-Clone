@@ -17,9 +17,9 @@ public class CountdownState : IState<GameStates>
         if (fromState == GameStates.Menu)
         {
             _gameManager.Player.PlayerInGameplay();
-            _gameManager.GameplayCanvas.GameplayInitialize();
         }
 
+        _gameManager.GameplayCanvas.GameplayInitialize();
 
         Debug.Log("CountdownState In");
     }
