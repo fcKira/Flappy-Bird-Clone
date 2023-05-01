@@ -20,7 +20,14 @@ public class PlayerController
         }
         else if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if (!EventSystem.current.IsPointerOverGameObject())
+            bool isOnButton;
+
+#if UNITY_ANDROID && !UNITY_EDITOR
+            isOnButton = EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId);
+#else
+            isOnButton = EventSystem.current.IsPointerOverGameObject();
+#endif
+            if (!isOnButton)
             {
                 _model.Flap();
             }
