@@ -4,7 +4,23 @@ using UnityEngine;
 
 public class MainMenuScreen : ScreenUI
 {
-    [SerializeField] IScreen _mainMenuScreen;
+    [SerializeField] GameObject _buttonExit;
+
+    public override void Activate()
+    {
+        base.Activate();
+
+        CheckPlatform();
+    }
+
+    void CheckPlatform()
+    {
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR
+        _buttonExit.SetActive(true);
+#else
+        _buttonExit.SetActive(false);
+#endif
+    }
 
     public void BTN_Play()
     {
