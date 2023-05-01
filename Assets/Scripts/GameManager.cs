@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
         if (Instance) Destroy(gameObject);
         else Instance = this;
 
+        Application.targetFrameRate = 60;
+
         _scoreHandler = new ScoreHandler(GameplayCanvas.SetHighscore, GameplayCanvas.SetCurrentScore);
 
         _FSM = new FSM<GameStates>();

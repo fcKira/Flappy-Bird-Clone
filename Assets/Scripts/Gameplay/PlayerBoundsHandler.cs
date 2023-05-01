@@ -13,7 +13,8 @@ public class PlayerBoundsHandler : MonoBehaviour
     private void Start()
     {
         Camera camera = Camera.main;
-        float screenHeight = (camera.orthographicSize * Screen.width / Screen.height) / 2;
+        float screenHeight = (camera.orthographicSize * ((float)Screen.width / Screen.height)) /2;
+
         _topBound.position = new Vector3(GameManager.Instance.Player.transform.position.x, camera.transform.position.y + screenHeight + _yOffsetTop, 0);
         _botBound.position = new Vector3(GameManager.Instance.Player.transform.position.x, -camera.transform.position.y + screenHeight + _yOffsetBot, 0);
     }
