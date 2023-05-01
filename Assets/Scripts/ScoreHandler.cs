@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class ScoreHandler : MonoBehaviour
+public class ScoreHandler
 {
     public int Highscore { get; private set; }
     public int Currentscore { get; private set; }
@@ -26,6 +26,13 @@ public class ScoreHandler : MonoBehaviour
     public void ResetCurrentScore()
     {
         Currentscore = 0;
+    }
+
+    public void ResetHighscore()
+    {
+        Highscore = 0;
+        EndGameSession();
+        _OnUpdateHighscore(Highscore);
     }
 
     public void EndGameSession()

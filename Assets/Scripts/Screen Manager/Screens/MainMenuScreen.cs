@@ -16,4 +16,9 @@ public class MainMenuScreen : ScreenUI
         //Here I could Push a new Screen or enable a window to ask to the user if he really wants to quit
         Application.Quit();
     }
+
+    public void BTN_DeleteHighscore()
+    {
+        GameManager.Instance.ResetHighscore();
+    }
 }

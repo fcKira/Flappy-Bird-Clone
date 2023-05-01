@@ -95,4 +95,9 @@ public class GameManager : MonoBehaviour
     {
         _scoreHandler.EarnScore();
     }
+    
+    public void ResetHighscore()
+    {
+        _scoreHandler.ResetHighscore();
+    }
 }
